@@ -111,7 +111,7 @@ const initialState = {
             .then( count =>{
               console.log({count});
               
-            this.setState(Object.assign({}, this.state.user, { entries: count } ))
+            this.setState(Object.assign(this.state.user, count))
             })
             .catch(err => console.log (err, 'this err'));
           }
