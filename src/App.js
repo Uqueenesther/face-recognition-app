@@ -61,6 +61,7 @@ const initialState = {
 // }
 
   calculateFaceLocation = (data) => {
+    console.log(data, "this is data")
    const clarifaiFace = data.outputs[0.].data.regions[0].region_info.bounding_box;
    const image = document.getElementById('inputImage');
    const width = Number(image.width);
@@ -77,9 +78,7 @@ const initialState = {
 
   displayFaceBox = (box) =>{
     this.setState({box: box});
-    console.log(box)
-    
-    
+    console.log(box) 
   }
 
   onInputChange = (event) => {
@@ -89,7 +88,7 @@ const initialState = {
 
   onButtonSubmit = () => {
     this.setState({imageUrl: this.state.input});
-    fetch(' https://tranquil-beach-82032.herokuapp.com/imageurl', {
+    fetch(' https://smart-brain2.onrender.com/imageurl', {
       method: 'post',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
@@ -99,7 +98,7 @@ const initialState = {
      .then(response => response.json())
       .then(response => {
            if (response) {
-             fetch(' https://tranquil-beach-82032.herokuapp.com/image', {
+             fetch('https://smart-brain2.onrender.com/image', {
               method: 'put',
               headers: {'Content-Type': 'application/json'},
               body: JSON.stringify({
